@@ -1,14 +1,19 @@
 ###############################################################################
 # prop_mod.py
 ###############################################################################
-#
-# Function to properly calculate mod for floats
-#
+# HISTORY:
+#   2017-03-11 - Written - Nick Rodd (MIT)
 ###############################################################################
 
 import numpy as np
 
 def pm_int(dividend, divisor):
+    """
+    Function to properly calculate mod for floats
+    
+    Returns:
+        dividend mod divisor
+    """
     
     while (dividend >= divisor):
         dividend -= divisor

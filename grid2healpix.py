@@ -1,20 +1,8 @@
 ###############################################################################
 # grid2healpix.py
 ###############################################################################
-#
-# Function that converts cartesian grid into a healpix map of a specified nside
-#
-# INPUT:
-#  - cmap: 2D grid map, entries must be per pixel, not per sr
-#          rows denote position in b, columns position in l
-#  - bin0bl: the b and l value of the [0,0] pixel of the map (in degrees). 
-#            This should be the smallest b value and largest l (bottom left of 
-#            the map). b and l are in degrees and measured b in [-90,90] and
-#            l in [180,-180], such that (0,0) is the galactic center
-#  - spacing: distance between the centre of adjacent pixels in b or l
-#             should be a float in degrees
-#  - nside: the nside of the output healpix map
-#
+# HISTORY:
+#   2017-03-11 - Written - Nick Rodd (MIT)
 ###############################################################################
 
 import numpy as np
@@ -23,6 +11,26 @@ from scipy import interpolate
 from prop_mod import pm
 
 def g2h(cmap, bin0bl, spacing, nside):
+    """
+    Converts a regular cartesian grid into a healpix map of a specified nside
+
+    Args:
+        cmap: 2D grid map, entries must be per pixel, not per sr
+              rows denote position in b, columns position in l
+        bin0bl: the b and l value of the [0,0] pixel of the map (in degrees).
+                This should be the smallest b value and largest l (bottom left 
+                of the map). b and l are in degrees and measured b in [-90,90] 
+                and l in [180,-180], such that (0,0) is the galactic center
+        spacing: distance between the centre of adjacent pixels in b or l
+                 should be a float in degrees
+        nside: the nside of the output healpix map
+
+    Returns:
+        healpix map
+
+    """
+
+        
     
     # Determine array of l and b values associated with cmap
     # NB: using convention where l runs from larger (left) to smaller (right)
