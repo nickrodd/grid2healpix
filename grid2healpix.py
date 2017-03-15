@@ -91,6 +91,7 @@ def g2h(cmap, bin0bl, spacing, nside):
         theta, phi = hp.pix2ang(nside,pi)
         lval = pm(phi*180./np.pi+180.,360.)-180.
         bval = (np.pi/2 - theta)*180./np.pi
+        # Negative below accounts for flip in map under the transpose
         hmap[pi] = cmap_int(lval, -bval)
 
     # Convert back to /pixel
